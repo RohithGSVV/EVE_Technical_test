@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.10)
+project(reverse_tunnel)
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(LIBSSH REQUIRED libssh)
+
+add_executable(reverse_tunnel reverse_tunnel.cpp)
+
+target_include_directories(reverse_tunnel PRIVATE ${LIBSSH_INCLUDE_DIRS})
+target_link_libraries(reverse_tunnel PRIVATE ${LIBSSH_LIBRARIES})
